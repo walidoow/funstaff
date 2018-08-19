@@ -23,27 +23,27 @@ public class Main {
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) {
 
-		// Écouter l'événement où une touche du clavier est frappée
+		// Ã‰couter l'Ã©vÃ©nement oÃ¹ une touche du clavier est frappÃ©e
 		MinecraftForge.EVENT_BUS.register(new KeyInputHandler());
-		// Écouter l'événement où l'overlay est rendu
+		// Ã‰couter l'Ã©vÃ©nement oÃ¹ l'overlay est rendu
 		MinecraftForge.EVENT_BUS.register(new GuiOverlaySanction());
-		// Écouter l'événement où le joueur reçoit un message dans le chat
+		// Ã‰couter l'Ã©vÃ©nement oÃ¹ le joueur reÃ§oit un message dans le chat
 		MinecraftForge.EVENT_BUS.register(new ChatReceiveEvent());
-		// Lancer la méthode de la préinitialisation pour le CommonProxy
+		// Lancer la mÃ©thode de la prÃ©initialisation pour le CommonProxy
 		proxy.preInit(event);
 	}
 
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {
 
-		// Lancer la méthode d'initialisation pour le CommonProxy
+		// Lancer la mï¿½thode d'initialisation pour le CommonProxy
 		proxy.init(event);
 	}
 
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event) {
 
-		// Lancer la méthode du post initialisation pour le CommonProxy
+		// Lancer la mï¿½thode du post initialisation pour le CommonProxy
 		proxy.postInit(event);
 	}
 
