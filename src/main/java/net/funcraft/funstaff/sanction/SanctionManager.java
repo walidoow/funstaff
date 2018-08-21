@@ -4,25 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.funcraft.funstaff.ressources.Values;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 
 public class SanctionManager {
 
 	/*
-	 * Après chaque mute effectué, les sanctions sont enregistrées. Le joueur
-	 * sanctionné, le message et la date où la sanction a été effectuée sont
-	 * enregistrés.
+	 * AprÃ¨s chaque mute effectuÃ©, les sanctions sont enregistrÃ©es. Le joueur
+	 * sanctionnÃ©, le message et la date oÃ¹ la sanction a Ã©tÃ© effectuÃ©e sont
+	 * enregistrÃ©s.
 	 */
 
 	private static List<String> messages = new ArrayList<String>();
 	private static String username;
 	private static boolean mute = false;
+	private static String message;
 
-	// La méthode qui va se charger d'obtenir les messages signalés, le joueur
-	// sanctionné et créer un object Sanction
+	// La mÃ©thode qui va se charger d'obtenir les messages signalÃ©s, le joueur
+	// sanctionnÃ© et crÃ©er un object Sanction
 	public static void checkSanction(String s) {
-		System.out.println(s);
 
-		// Créer les sanction
+		System.out.println(s);
+		message = s;
+		if (message.length() >= 22) {
+			if (s.substring(0, 22).equals("-----\nJoueur signal\u00E9:")) {
+				String a = s.substring(0, 22);
+				username = s.substring(0, a.indexOf("\n"));
+				Minecraft.getMinecraft().thePlayer.addChatMessage(new TextComponentString(username));
+			}
+		}
+
+		/*// CrÃ©er les sanction
 		if (s.equals("[SS] La sanction a \u00E9t\u00E9 appliqu\u00E9e !")) {
 			if (!mute) {
 				// Ajouter un ban
@@ -30,14 +43,14 @@ public class SanctionManager {
 				return;
 			}
 
-			// Créer la sanction
+			// CrÃ©er la sanction
 			Sanction sanction = new Sanction(username, messages);
-			// Supprimer tous les messages signalés pour les prochains reports
+			// Supprimer tous les messages signalï¿½s pour les prochains reports
 			messages.clear();
 			mute = false;
 		}
 
-		// Obtenir le pseudo du joueur signalé
+		// Obtenir le pseudo du joueur signalï¿½
 		if (s.length() >= 15) {
 			if (s.substring(0, 15).equals("Joueur signal\u00E9:")) {
 				mute = true;
@@ -45,13 +58,13 @@ public class SanctionManager {
 			}
 		}
 
-		// Obtenir les messages signalés, ainsi que la personne ayant signalé
+		// Obtenir les messages signalï¿½s, ainsi que la personne ayant signalï¿½
 		// ces messages
 		if (s.length() >= 5) {
 			if (s.substring(0, 5).equals("- par")) {
 				messages.add(s);
 			}
-		}
+		}*/
 	}
 
 }

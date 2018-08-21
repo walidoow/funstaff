@@ -7,9 +7,9 @@ import net.funcraft.funstaff.ressources.Values;
 
 public class Sanction {
 
-	// Pseudo du joueur signalé
+	// Pseudo du joueur signalÃ©
 	String username;
-	// Les messages signalés
+	// Les messages signalÃ©s
 	List<String> messages = new ArrayList<String>();
 
 	public Sanction(String username, List<String> messages) {
